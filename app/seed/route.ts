@@ -113,3 +113,9 @@
 //     return Response.json({ error }, { status: 500 });
 //   }
 // }
+export async function GET() {
+  return Response.json(
+    { message: "Database seeding is disabled in this environment." },
+    { status: 503 }
+  );
+}
