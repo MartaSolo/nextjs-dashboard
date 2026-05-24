@@ -40,10 +40,5 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.0.5"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "bcrypt",
-      "sharp"
-    ]
-  }
+  "packageManager": "pnpm@11.1.2"
 }
