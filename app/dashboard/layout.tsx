@@ -1,5 +1,7 @@
 import SideNav from "@/app/ui/dashboard/sidenav";
 
+export const dynamic = "force-dynamic";
+
 export default function DashboardLayout({
   children,
 }: {
