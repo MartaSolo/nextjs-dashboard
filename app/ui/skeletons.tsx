@@ -1,6 +1,6 @@
 // Loading animation
 const shimmer =
-  'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent';
+  "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
 
 export function CardSkeleton() {
   return (
@@ -211,6 +211,133 @@ export function InvoicesTableSkeleton() {
               <TableRowSkeleton />
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function CustomersTableSkeleton() {
+  return (
+    <div className="w-full">
+      <div className="mt-6 flow-root">
+        <div className="overflow-x-auto">
+          <div className="inline-block min-w-full align-middle">
+            <div className="overflow-hidden rounded-md bg-gray-50 p-2 md:pt-0">
+              {/* Mobile cards */}
+              <div className="md:hidden">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <div key={i} className="mb-2 w-full rounded-md bg-white p-4">
+                    {/* Name + avatar row */}
+                    <div className="flex items-center justify-between border-b pb-4">
+                      <div>
+                        <div className="mb-2 flex items-center gap-3">
+                          <div
+                            className={`${shimmer} relative h-7 w-7 overflow-hidden rounded-full bg-gray-100`}
+                          />
+                          <div
+                            className={`${shimmer} relative h-4 w-32 overflow-hidden rounded-md bg-gray-100`}
+                          />
+                        </div>
+                        <div
+                          className={`${shimmer} relative h-3 w-40 overflow-hidden rounded-md bg-gray-100`}
+                        />
+                      </div>
+                    </div>
+                    {/* Pending / Paid row */}
+                    <div className="flex w-full items-center justify-between border-b py-5">
+                      <div className="flex w-1/2 flex-col gap-2">
+                        <div
+                          className={`${shimmer} relative h-3 w-12 overflow-hidden rounded-md bg-gray-100`}
+                        />
+                        <div
+                          className={`${shimmer} relative h-4 w-20 overflow-hidden rounded-md bg-gray-100`}
+                        />
+                      </div>
+                      <div className="flex w-1/2 flex-col gap-2">
+                        <div
+                          className={`${shimmer} relative h-3 w-8 overflow-hidden rounded-md bg-gray-100`}
+                        />
+                        <div
+                          className={`${shimmer} relative h-4 w-20 overflow-hidden rounded-md bg-gray-100`}
+                        />
+                      </div>
+                    </div>
+                    {/* Invoice count */}
+                    <div className="pt-4">
+                      <div
+                        className={`${shimmer} relative h-3 w-20 overflow-hidden rounded-md bg-gray-100`}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop table */}
+              <table className="hidden min-w-full rounded-md text-gray-900 md:table">
+                <thead className="rounded-md bg-gray-50 text-left text-sm font-normal">
+                  <tr>
+                    {[
+                      "Name",
+                      "Email",
+                      "Total Invoices",
+                      "Total Pending",
+                      "Total Paid",
+                    ].map((col) => (
+                      <th
+                        key={col}
+                        scope="col"
+                        className="px-4 py-5 font-medium sm:pl-6"
+                      >
+                        {col}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 text-gray-900">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <tr key={i}>
+                      {/* Name + avatar */}
+                      <td className="whitespace-nowrap bg-white py-5 pl-4 pr-3 sm:pl-6">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`${shimmer} relative h-7 w-7 overflow-hidden rounded-full bg-gray-100`}
+                          />
+                          <div
+                            className={`${shimmer} relative h-4 w-28 overflow-hidden rounded-md bg-gray-100`}
+                          />
+                        </div>
+                      </td>
+                      {/* Email */}
+                      <td className="whitespace-nowrap bg-white px-4 py-5">
+                        <div
+                          className={`${shimmer} relative h-4 w-36 overflow-hidden rounded-md bg-gray-100`}
+                        />
+                      </td>
+                      {/* Total invoices */}
+                      <td className="whitespace-nowrap bg-white px-4 py-5">
+                        <div
+                          className={`${shimmer} relative h-4 w-8 overflow-hidden rounded-md bg-gray-100`}
+                        />
+                      </td>
+                      {/* Total pending */}
+                      <td className="whitespace-nowrap bg-white px-4 py-5">
+                        <div
+                          className={`${shimmer} relative h-4 w-16 overflow-hidden rounded-md bg-gray-100`}
+                        />
+                      </td>
+                      {/* Total paid */}
+                      <td className="whitespace-nowrap bg-white px-4 py-5">
+                        <div
+                          className={`${shimmer} relative h-4 w-16 overflow-hidden rounded-md bg-gray-100`}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
