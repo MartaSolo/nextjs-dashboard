@@ -16,8 +16,3 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm build
-        env:
-          # Dummy values so build can evaluate modules that read env at import time
-          POSTGRES_URL: postgresql://user:pass@localhost:5432/db
-          AUTH_SECRET: ci-dummy-secret-for-build-only
-          AUTH_URL: http://localhost:3000/api/auth
