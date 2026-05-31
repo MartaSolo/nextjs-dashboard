@@ -63,60 +63,7 @@ export async function createCustomer(prevState: State, formData: FormData) {
     };
   }
 
-  // Revalidate the cache for the invoices page and redirect the user.
+  // Revalidate the cache for the customers page and redirect the user.
   revalidatePath("/dashboard/customers");
   redirect("/dashboard/customers");
 }
-
-// const UpdateInvoice = FormSchema.omit({ id: true, date: true });
-
-// export async function updateInvoice(
-//   id: string,
-//   prevState: State,
-//   formData: FormData
-// ) {
-//   // --- LAYER 1: Expected errors (validation) ---
-//   const validatedFields = UpdateInvoice.safeParse({
-//     customerId: formData.get("customerId"),
-//     amount: formData.get("amount"),
-//     status: formData.get("status"),
-//   });
-
-//   // If form validation fails, return errors early. Otherwise, continue.
-//   if (!validatedFields.success) {
-//     return {
-//       errors: validatedFields.error.flatten().fieldErrors,
-//       message: "Missing Fields. Failed to Update Invoice.",
-//     };
-//   }
-
-//   // Prepare data for update
-//   const { customerId, amount, status } = validatedFields.data;
-//   const amountInCents = amount * 100;
-
-//   try {
-//     await sql`
-//     UPDATE invoices
-//     SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
-//     WHERE id = ${id}
-//   `;
-//   } catch (error) {
-//     console.error("Database Error:", error);
-//     return {
-//       message: "Database Error: Failed to Update Invoice",
-//     };
-//   }
-
-//   revalidatePath("/dashboard/invoices");
-//   redirect("/dashboard/invoices");
-// }
-
-// export async function deleteInvoice(id: string) {
-//   // throw new Error("Failed to delete invoice");
-//   try {
-//     await sql`DELETE FROM invoices WHERE id = ${id}`;
-//   } catch (error) {
-//     throw new Error("Failed to Delete Invoice");
-//   }
-//   revalidatePath("/dashboard/invoices");
-// }
