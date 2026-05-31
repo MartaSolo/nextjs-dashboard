@@ -5,6 +5,7 @@ import { fetchCustomersPages } from "@/app/lib/data";
 import Search from "@/app/ui/search";
 import Pagination from "@/app/ui/pagination";
 import { CustomersTableSkeleton } from "@/app/ui/skeletons";
+import { CreateItem } from "@/app/ui/buttons";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
@@ -29,6 +30,9 @@ export default async function Page(props: {
       </h1>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search customers..." />
+        <CreateItem href="/dashboard/customers/create">
+          <span className="hidden md:block">Create Customer</span>
+        </CreateItem>
       </div>
       <Suspense key={query + currentPage} fallback={<CustomersTableSkeleton />}>
         <Table query={query} currentPage={currentPage} />
