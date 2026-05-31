@@ -1,3 +1,7 @@
+import { ITEMS_PER_PAGE } from "../lib/data";
+
+const skeletonItems = Array.from({ length: ITEMS_PER_PAGE });
+
 // Loading animation
 const shimmer =
   "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
@@ -169,12 +173,9 @@ export function InvoicesTableSkeleton() {
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
+            {skeletonItems.map((_, index) => (
+              <InvoicesMobileSkeleton key={index} />
+            ))}
           </div>
           <table className="hidden min-w-full text-gray-900 md:table">
             <thead className="rounded-lg text-left text-sm font-normal">
@@ -203,12 +204,9 @@ export function InvoicesTableSkeleton() {
               </tr>
             </thead>
             <tbody className="bg-white">
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
+              {skeletonItems.map((_, index) => (
+                <TableRowSkeleton key={index} />
+              ))}
             </tbody>
           </table>
         </div>
@@ -226,7 +224,7 @@ export function CustomersTableSkeleton() {
             <div className="overflow-hidden rounded-md bg-gray-50 p-2 md:pt-0">
               {/* Mobile cards */}
               <div className="md:hidden">
-                {Array.from({ length: 5 }).map((_, i) => (
+                {skeletonItems.map((_, i) => (
                   <div key={i} className="mb-2 w-full rounded-md bg-white p-4">
                     {/* Name + avatar row */}
                     <div className="flex items-center justify-between border-b pb-4">
@@ -295,7 +293,7 @@ export function CustomersTableSkeleton() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 text-gray-900">
-                  {Array.from({ length: 5 }).map((_, i) => (
+                  {skeletonItems.map((_, i) => (
                     <tr key={i}>
                       {/* Name + avatar */}
                       <td className="whitespace-nowrap bg-white py-5 pl-4 pr-3 sm:pl-6">
